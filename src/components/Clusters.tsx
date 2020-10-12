@@ -1,18 +1,25 @@
 import wisdom from '../assets/wisdom.mp3'
 import wisdom2 from '../assets/wisdom2.wav'
 
-const Clusters = [
+type Cluster = {
+    id: number,
+    cluster: string,
+    audio:string,
+    selected:boolean
+}
+
+const Clusters:Cluster[] = [
     {
         id: 1,
         cluster: 'ch',
-        audio: {wisdom},
+        audio: wisdom,
         selected: true
     },
 
     {
         id: 2,
         cluster: 'th',
-        audio: {wisdom2},
+        audio: wisdom2,
         selected: true
     },
     {

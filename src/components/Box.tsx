@@ -47,8 +47,8 @@ class Box extends React.Component<Props, State> {
 
         const all = {
             backgroundColor: 'white',
-            textAlign: 'center'
-        } as React.CSSProperties;
+            textAlign: 'center' as const,
+        };
 
         return (
             <div style={all}>

@@ -19,10 +19,10 @@ class App extends React.Component<Props,State> {
 
   render() {
     const third = { /*for formatting columns, don't mess with this*/
-      float: 'left',
-      width: '33.33%',
+      float: 'left' as const,
+      width: '33.33%' as const,
       padding: '2%',
-    } as React.CSSProperties;
+    };
 
     return (
       <>
