@@ -1,7 +1,9 @@
 import React from 'react';
 import '../src/App.css';
 import Box from './components/Box';
-import Clusters from "./components/Clusters";
+import Beginning from "./components/Beginning";
+import Middle from './components/Middle';
+import End from './components/End';
 
 interface Props{};
 interface State{
@@ -28,12 +30,13 @@ class App extends React.Component<Props,State> {
       <>
         <div className="App">
           <div style={third}>
-            <Box arr={Clusters}/>
-            
+            <Box arr={Beginning}/>
           </div>
           <div style={third}>
+            <Box arr={Middle}/>
           </div>
           <div style={third}>
+            <Box arr={End}/>
           </div>
         </div>
       </>
