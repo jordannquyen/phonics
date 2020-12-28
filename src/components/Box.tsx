@@ -1,5 +1,5 @@
 import React from 'react';
-import wisdom from '../assets/wisdom.mp3'
+
 
 interface Props {
     arr: Array<any>,
@@ -17,33 +17,17 @@ class Box extends React.Component<Props, State> {
         }
     }
 
-    poschange(this: any) {
-        this.setState((prevState: any) => {
-            if((prevState.position + 1) == this.props.arr.length) {
-
-                return{position: 0}
-            }
-            else{
-                return {position: prevState.position + 1};
-            }
-          })
-    }
-
-    negchange(this: any) {
-        this.setState((prevState: any) => {
-            if(prevState.position == 0) {
-
-                return{position: (this.props.arr.length - 1)}
-            }
-            else{
-                return {position: prevState.position - 1};
-            }
-          })
+    random(this: any) { 
+        var min = Math.ceil(0)
+        var max = Math.floor(this.props.arr.length + 1)
+        this.setState(() => {
+            return{position: Math.floor(Math.random() * (max - min) + min)}
+        })
     }
 
     
     render() {
-        var item = this.props.arr[this.state.position];
+        var item = this.props.arr[this.state.position]
 
         const all = {
             backgroundColor: 'white',
@@ -56,8 +40,7 @@ class Box extends React.Component<Props, State> {
                 <audio ref='audioTag' controls>
                     <source src={item.audio} type="audio/mp3" />
                 </audio>
-                <button onClick={() => this.poschange()}>+</button>
-                <button onClick={() => this.negchange()}>-</button>
+                <button onClick={() => this.random()}>hhhh</button>
             </div>
         );
     }
