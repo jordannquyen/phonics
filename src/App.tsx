@@ -30,7 +30,7 @@ class App extends React.Component<Props,State> {
             display: 'table',
             clear: 'both',
           } as React.CSSProperties}/>
-
+          
           <div style={third}>
             <Box arr={Beginning} backgroundColor="#ea7317"
             buttonColor={buttonBack} buttonHoverColor={buttonHoverBack}/>

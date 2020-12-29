@@ -1,5 +1,6 @@
 import React from 'react';
-import {BiShuffle} from 'react-icons/bi'
+import ArrItem from './ArrItem';
+import {BiShuffle} from 'react-icons/bi';
 
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 interface State {
+    arr: Array<any>
     position: number,
     buttonBackground: any,
 }
@@ -18,18 +20,24 @@ class Box extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
+            arr: this.props.arr,
             position: 0,
             buttonBackground: this.props.buttonColor,
         }
+        this.handleChange = this.handleChange.bind(this)
     }
 
     random(this: any) { 
         const min = 0
         const max = this.props.arr.length
-        var random = Math.floor(Math.random() * (max - min) + min)
-        console.log(random)
-        this.setState({position: random})
-    }
+        while (true) {
+            var random = Math.floor(Math.random() * (max - min) + min)
+            if (this.state.arr[random].selected) {
+                this.setState({position: random})
+                break
+            };
+        };
+    };
 
     hovering(this:any) {
         this.setState(() => {
@@ -42,12 +50,28 @@ class Box extends React.Component<Props, State> {
             return{buttonBackground: this.props.buttonColor}
         })
     }
+
+    handleChange(id: any) {
+        this.setState((prevState: any) => {
+            const updatedArr = prevState.arr.map((arritem: any) => {
+                if (arritem.id === id) {
+                    arritem.selected = !arritem.selected
+                    console.log(arritem)
+                }
+                return arritem;
+            })
+            return {
+                arr: updatedArr
+            }
+        })
+    }
     
     render() {
-        var item = this.props.arr[this.state.position]
+        const arr = this.state.arr && this.state.arr.map(item => <ArrItem item={item !== undefined && item} key={item !== undefined && item.id.toString()} handleChange={this.handleChange}/>)
+        var thing = this.props.arr[this.state.position]
 
         const all = {
-            backgroundColor: this.props.backgroundColor,
+            backgroundColor: '#faf0e6',
             textAlign: 'center',
             margin: '5%',
         } as React.CSSProperties;
@@ -60,14 +84,24 @@ class Box extends React.Component<Props, State> {
             backgroundColor: this.state.buttonBackground,
             fontSize: '28px',
             textAlign: 'center',
-            //color: '#faf0e6',
             color: 'black'
         } as React.CSSProperties
 
         return (
             <div style={all}>
-                <h1 style={{marginTop: '40px' as const}}>{item.cluster}</h1>
-                <button style={buttonStyle} onMouseEnter={() => this.hovering()} onMouseLeave={() => this.notHovering()} onClick={() => this.random()}> <BiShuffle/> </button>
+                <div style={{backgroundColor: this.props.backgroundColor}}>
+                    <h1 style={{marginTop: '40px' as const}}>{thing.cluster}</h1>
+                    <button style={buttonStyle} onMouseEnter={() => this.hovering()} onMouseLeave={() => this.notHovering()} onClick={() => this.random()}> <BiShuffle/> </button>
+                </div>
+                <div style={{
+                    content: "",
+                    display: "table",
+                    clear: "both",
+                    marginBottom: '30px'
+                }}/>
+                <div style={{backgroundColor: this.props.backgroundColor}}>
+                    {arr}
+                </div>
             </div>
         );
     }

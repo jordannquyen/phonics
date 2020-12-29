@@ -1,5 +1,5 @@
 type Cluster = {
-    id: number,
+    id: any,
     cluster: string,
     selected:boolean
 }
