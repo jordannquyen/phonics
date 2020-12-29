@@ -30,13 +30,23 @@ class Box extends React.Component<Props, State> {
     random(this: any) { 
         const min = 0
         const max = this.props.arr.length
+        var falsecount = 0
+        for(var i=0; i<this.props.arr.length; i++) {
+            if (!this.props.arr[i].selected) {
+                falsecount ++;
+            }
+        }
+        if (falsecount == this.props.arr.length) {
+            alert("Please select at least one cluster!")
+            this.props.arr[0].selected = true
+        }
         while (true) {
             var random = Math.floor(Math.random() * (max - min) + min)
             if (this.state.arr[random].selected) {
                 this.setState({position: random})
                 break
-            };
-        };
+            }
+        }
     };
 
     hovering(this:any) {
