@@ -25,6 +25,7 @@ class App extends React.Component<Props,State> {
           <h1 style={{
             marginTop: '0',
           }}>Phonics Cards</h1>
+
           <div style={{
             content: "",
             display: 'table',
