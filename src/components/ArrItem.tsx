@@ -9,6 +9,7 @@ function ArrItem(props: any) {
         paddingLeft: '10%',
         paddingTop: 0,
         paddingBottom: 0,
+        marginBottom: 0,
         fontSize: '20px',
 
     }
