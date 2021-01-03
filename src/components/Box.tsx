@@ -36,7 +36,7 @@ class Box extends React.Component<Props, State> {
                 falsecount ++;
             }
         }
-        if (falsecount == this.props.arr.length) {
+        if (falsecount === this.props.arr.length) {
             alert("Please select at least one cluster!")
             this.props.arr[0].selected = true
         }
