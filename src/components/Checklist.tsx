@@ -4,6 +4,7 @@ import ChecklistItem from './ArrItem'
 interface Props{
     arr: Array<any>
 };
+
 interface State{};
 
 class Checklist extends React.Component<Props,State> {
