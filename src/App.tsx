@@ -25,7 +25,7 @@ class App extends React.Component<Props,State> {
           <h1 style={{
             marginTop: '0',
           }}>Phonics Cards</h1>
-          <p style={{fontSize: '20px'}}>science palooza project by Hannah Nguyen &amp; Jordan Nguyen || 
+          <p style={{fontSize: '20px'}}> 
             click <a href="https://drive.google.com/file/d/1nElHbqSzt5YmhNklcG4PKSvQehKTxL9X/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> for instructions</p>
 
           <div style={{
